@@ -1,0 +1,11 @@
+.x-post-meta-item {
+    display: inline-block;
+  }
+  
+.x-post-meta-item svg {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.15em;
+    margin-right: 4px;
+}

@@ -1,0 +1,70 @@
+{{- /* Comments area start */ -}}
+{{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
+<h2 style="line-height: 3.2em;">{{ i18n "comments" | default "Comments" }} </h2>
+
+{{- /* Comments by Cusdis */ -}}
+{{- if eq site.Params.commentsApp `cusdis` -}}
+<div id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="00b90b9a-3343-4bcd-b466-0d4344a54e02"
+  data-page-id="{{ .File.UniqueID }}"
+  data-page-url="{{ .Permalink }}"
+  data-page-title="{{ .Title }}"
+></div>
+{{- $js := resources.GetRemote "https://cusdis.com/js/widget/lang/zh-cn.js" | js.Build (dict "minify" true) -}}
+<script type='text/javascript'>
+  {{ $js.Content | safeJS }}
+</script>
+
+{{- $js := resources.GetRemote "https://cusdis.com/js/cusdis.es.js" | js.Build (dict "minify" true) -}}
+<script type='text/javascript'>
+  {{ $js.Content | safeJS }}
+</script>
+<script type='text/javascript'>
+// 不同的Hugo theme可能会需要不同的判断方式
+function getCurrentTheme() {
+    return document.body.classList.contains('dark') ? 'dark' : 'light';
+}
+
+// Watch for theme changes
+const themeObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const isDarkMode = getCurrentTheme() === 'dark';
+            window.CUSDIS.setTheme(isDarkMode ? 'dark' : 'light')
+            // loadUtterances(isDarkMode);
+            console.log(`changing theme`, isDarkMode);
+        }
+    });
+});
+
+// Start observing the body element for class changes
+themeObserver.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class']
+});
+</script>
+{{- end }}
+
+{{- /* Comments by Giscus */ -}}
+{{- if eq site.Params.commentsApp `giscus` -}}
+<div class="giscus"></div>
+<script src="https://giscus.app/client.js"
+        data-repo="moliu666/blog-comment"
+        data-repo-id="R_kgDONstPhw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDONstPh84CmK6g"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+{{- end }}
+{{- /* Comments area end */ -}}
+

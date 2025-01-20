@@ -1,0 +1,54 @@
+zh:
+  contentDir: content/zh
+  disabled: false
+  languageCode: zh-cn
+  languageDirection: ltr
+  languageName: 简体中文
+  title: "45° 青年"
+  weight: 1
+  menu:
+      main:
+        # - name: 标签
+        #   url: /tags/
+        #   weight: 30
+        - name: "分类"
+          url: /zh/categories/
+          post: ' ▾'
+          weight: 20
+        - parent: 分类
+          name: "全栈之路"
+          url: /zh/categories/全栈之路/
+          weight: 1
+        - parent: 分类
+          name: "生活感悟"
+          url: /zh/categories/生活感悟/
+          weight: 2
+  params:
+    # home-info mode
+    homeInfoParams:
+      Title: "Hi there \U0001F44B"
+      Content: >
+        这里是**45°青年**的个人博客，分享一路走来的心得。 \
+
+        There is **45° Youth's** personal blog, where he shares a bit of what he has learned along the way. 
+en:
+  contentDir: content/en
+  disabled: false
+  languageCode: en-US
+  languageDirection: ltr
+  languageName: English
+  title: "45° Youth"
+  weight: 2
+  # menu:
+  #     main:
+  #       - name: Tags
+  #         url: /tags/
+  #         weight: 30
+  params:
+    # home-info mode
+    homeInfoParams:
+      Title: "Hi there \U0001F44B"
+      Content: >
+        这里是**45°青年**的个人博客，分享一路走来的心得。 \
+
+        There is **45° Youth's** personal blog, where he shares a bit of what he has learned along the way. 

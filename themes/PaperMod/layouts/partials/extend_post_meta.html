@@ -1,0 +1,17 @@
+{{- $scratch := newScratch }}
+
+{{- if (.Param "enableBusuanzi") -}}
+{{- $scratch.Add "meta_keys" (slice "view") -}}
+{{- $scratch.SetInMap "meta_items" "view" (slice "view" "<span id=\"busuanzi_value_page_pv\">0</span>") -}}
+{{- end }}
+
+{{- $metaItems := $scratch.Get "meta_items" -}}
+{{- range ($scratch.Get "meta_keys") -}}
+{{- $icon := (partial "svg.html" (dict "name" (index $metaItems . 0))) -}}
+{{- $text := (printf "<span>%s</span>" (index $metaItems . 1)) -}}
+{{- $scratch.Add "meta" (slice (printf "&nbsp;·&nbsp;<span class=\"x-post-meta-item\">%s%s</span>" $icon $text )) -}}
+{{- end }}
+
+{{- with ($scratch.Get "meta") -}}
+{{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end }}
