@@ -1,0 +1,47 @@
+baseURL : https://example.org/
+# title: Hugo Artist`s Blog
+theme: PaperMod
+pagination:
+  pagerSize: 5 # 列表分页显示的文章数 （默认 10）
+   
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+hasCJKLanguage: true # 自动检测中文/日语/韩语语言的内容。这会使 .Summary 和 .WordCount 对于 CJK 语言表现正确。
+enableInlineShortcodes: true # 启用内联段代码支持
+enableEmoji: true # 允许使用 Emoji 表情，建议 true
+rssLimit: 10
+enableRobotsTXT: true
+googleAnalytics: “G-9MG65HQHEL”
+
+defaultContentLanguage: zh # 最顶部首先展示的语言页面
+defaultContentLanguageInSubdir: true
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+
+markup:
+  # https://github.com/adityatelange/hugo-PaperMod/issues/1386
+  highlight:
+    noClasses: false
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: 'trac'
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
